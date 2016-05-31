@@ -20,25 +20,6 @@ def _decorate(obj, mode):
         inst = obj
         wrapper = None
         w = FactoryWrapper(obj, mode=mode)
-    elif isinstance(obj, types.MethodType):
-        if PY2:
-            cls = obj.im_class
-            inst = obj.im_self
-        else:
-            inst = obj.__self__
-            cls = inst.__class__
-        f = obj
-        if inst is None:
-            inst = cls()
-        @wraps(f)
-        def wrapper(*args):
-            return f(inst, *args)
-        if mode == 'encode':
-            w = FactoryWrapper(inst, mode=mode, encode_func=wrapper)
-        elif mode == 'decode':
-            w = FactoryWrapper(inst, mode=mode, decode_func=wrapper)
-        else:
-            w = FactoryWrapper(wrapper, mode=mode)
     Registry.register(w)
     if wrapper is None:
         wrapper = obj
