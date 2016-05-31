@@ -15,7 +15,7 @@ def _decorate(obj, mode):
     elif isinstance(obj, type):
         inst = obj()
         wrapper = None
-        w = FactoryWrapper(inst, mode=mode)
+        w = FactoryWrapper(inst, mode=mode, obj_id=id(obj))
     elif isinstance(obj.__class__, type):
         inst = obj
         wrapper = None

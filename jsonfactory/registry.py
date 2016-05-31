@@ -16,7 +16,8 @@ def wrap_instance_method(obj, func):
 
 
 class FactoryWrapper(object):
-    def __init__(self, obj, mode=None, encode_func=None, decode_func=None):
+    def __init__(self, obj, mode=None, obj_id=None,
+                 encode_func=None, decode_func=None):
         self.factory_obj = obj
         if encode_func is None:
             encode_func = getattr(obj, 'default', getattr(obj, 'encode', None))
@@ -29,7 +30,9 @@ class FactoryWrapper(object):
         self.encode_func = encode_func
         self.decode_func = decode_func
         self.mode = mode
-        self.id = id(obj)
+        if obj_id is None:
+            obj_id = id(obj)
+        self.id = obj_id
     def encode(self, o):
         if self.mode == 'encode':
             return self.factory_obj(o)
