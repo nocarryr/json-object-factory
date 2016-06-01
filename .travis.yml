@@ -3,6 +3,10 @@ python:
   - "2.7"
   - "3.4"
   - "3.5"
+addons:
+  apt:
+    packages:
+      - pandoc
 install:
   - pip install pytest-cov coveralls
   - pip install -e .
@@ -11,3 +15,11 @@ script:
 after_success:
   - coverage combine
   - coveralls
+deploy:
+  provider: pypi
+  user: nocarryr
+  distributions: "sdist bdist_wheel"
+  on:
+    tags: true
+  password:
+    secure: nXG8EyrzpRpLloceTVojQZm64/uVspv8touYG4xUAF9z+ybrXFu5M/x4XRnGZJJIf3MNAuqhsN0ALpSzlgYVrQTbnSGeTMI5lNeXu3/iKAFKZXRQUJZfmaTzqu8+drAmTMiEEw6CXjNXC2VO6ZP9tS1XOsfW3beYGKJ/QhSrtQv61jwKLjH7Pf2rNoAVk9w1PHDWQRagkyxEB5LKXLRPNYD+ZIs0+V0yNRD2dOqrd/2OSrvJai1cFTL8ffDhSOmj96qPSwTJR2/3NysEXNWlJt69eJPj6TGKHC5aJcIURX8xfVnWgDnJlyWeNuP2mEOuKLuJyKsPVaWd7hzDM0dDhlhDJu31KXDZNUTo02EP4DVB0+Vl7V0EaLTZ+bLs4wCuVZRALKJ84ll3x02Y4y+SOG9I8+w06sbMKpo/L42bPMx5ZHfG4KdQc53jimRgJB67rAfCRAfnRA62k8BF41q7L2gWmSC6szVbqdzoRoh+6e+3lO3vRVK275Tjk4DLjXeTs6I+ABLYL4BwTNbUa/p3RqYOZNFRaUqiwywnxRy9nwNUZFsVOptIfOAwe4VfpJtXBjB9zDowkV3X4TQNqrc3jENl3ZFcDsJVQAXgpwfhPfM9XEp18a/FUfjsiWYxxIGI7cFwgTE3fKw7XC13OKaXcxkpkedTq9ttuQmuc/r9ucA=
