@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/nocarryr/json-object-factory.svg?branch=master)](https://travis-ci.org/nocarryr/json-object-factory) [![Coverage Status](https://coveralls.io/repos/github/nocarryr/json-object-factory/badge.svg?branch=master)](https://coveralls.io/github/nocarryr/json-object-factory?branch=master)
+
 # json-object-factory
 Simplifies building custom encoders and object-hooks for Python's default JSON implementation.
 
