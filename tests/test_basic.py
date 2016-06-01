@@ -43,6 +43,9 @@ def test_instance_methods(json_factory, custom_objects, encode_decode_funcs):
     new_obj = json_factory.loads(s)
     check_objects_equal(src_obj, new_obj)
 
+    json_factory.Registry.unregister(Encoder)
+    assert len(json_factory.Registry.objects) == 2
+
     json_factory.Registry.unregister(encoder)
     json_factory.Registry.unregister(decoder)
 
