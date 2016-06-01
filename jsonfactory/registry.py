@@ -53,7 +53,7 @@ class Registry_(object):
         self.objects = {}
     def register(self, obj, mode=None):
         if not isinstance(obj, FactoryWrapper):
-            obj = FactoryWrapper(obj, mode)
+            obj = _build_wrapper(obj, mode)
         self.objects[obj.id] = obj
     def unregister(self, obj):
         obj_id = id(obj)
