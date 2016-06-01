@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name = "json-object-factory",
-    version = "0.0.1",
+    version = "v0.0.1",
     author = "Matthew Reid",
     author_email = "matt@nomadic-recording.com",
     description = "Simplify JSON Encoders and Object Hooks",
