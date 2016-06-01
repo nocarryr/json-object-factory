@@ -2,6 +2,10 @@
 # json-object-factory
 Simplifies building custom encoders and object-hooks for Python's default JSON implementation.
 
+## Installation
+```
+$ pip install json-object-factory
+```
 ## Usage
 Add encoders and decoders to the registry:
 ```python
