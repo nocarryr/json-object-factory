@@ -6,7 +6,7 @@ from jsonfactory.registry import FactoryWrapper, Registry
 
 PY2 = sys.version_info.major == 2
 
-def _decorate(obj, mode):
+def _build_wrapper(obj, mode):
     inst = None
     if isinstance(obj, types.FunctionType):
         f = obj
@@ -20,17 +20,15 @@ def _decorate(obj, mode):
         inst = obj
         wrapper = None
         w = FactoryWrapper(obj, mode=mode)
-    Registry.register(w)
-    if wrapper is None:
-        wrapper = obj
-    return obj
+    return w
 
 def register(obj, mode=None):
-    r = _decorate(obj, mode)
-    return r
+    w = _build_wrapper(obj, mode)
+    Registry.register(w)
+    return obj
 
 def encoder(obj):
-    return _decorate(obj, 'encode')
+    return register(obj, 'encode')
 
 def decoder(obj):
-    return _decorate(obj, 'decode')
+    return register(obj, 'decode')
